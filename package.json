@@ -1,0 +1,22 @@
+{
+  "name": "lodash-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/midorigreen/lodash-sample.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/midorigreen/lodash-sample/issues"
+  },
+  "homepage": "https://github.com/midorigreen/lodash-sample",
+  "devDependencies": {
+    "lodash": "^4.17.4"
+  }
+}
