@@ -25,13 +25,14 @@ const isPrimitive = x => typeof x !== 'object'
  * @param {*} x 
  */
 const isEmptyDeep = x => {
-  console.log(x)
-  if (isPrimitive(x)) {
-    if (x === undefined) {
-      return false
-    }
-  }
-  return true
+   const y = Object.values(x)
+   if (y.length === 0) {
+     return true
+   }
+   if (y.filter(z => z !== undefined).length === 0) {
+     return true
+   }
+   return false
 }
 
 /**
