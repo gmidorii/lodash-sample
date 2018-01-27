@@ -25,16 +25,13 @@ const isPrimitive = x => typeof x !== 'object'
  * @param {*} x 
  */
 const isEmptyDeep = x => {
-  if (x === undefined) {
-    return true
+  console.log(x)
+  if (isPrimitive(x)) {
+    if (x === undefined) {
+      return false
+    }
   }
-  Object.values(x)
-    .filter(v => {
-      if (typeof v === 'object') {
-        return isEmptyDeep(v)
-      }
-    })
-  return Object.keys(x).length === 0
+  return true
 }
 
 /**
@@ -45,12 +42,9 @@ const isEmptyDeep = x => {
  */
 const omitEmptyDeep = x => {
   if (isPrimitive(x)) {
-      console.log('p:', x)
       return x;
   }
 
-  console.log('o', x)
-  console.log(_.mapValues(x, omitEmptyDeep))
   return _.isArray(x) ?
       _.map(_.reject(x, isEmptyDeep), omitEmptyDeep) :
       _.mapValues(_.omitBy(x, isEmptyDeep), omitEmptyDeep);
