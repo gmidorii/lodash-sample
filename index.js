@@ -21,18 +21,20 @@ const a = {
 const isPrimitive = x => typeof x !== 'object'
 
 /**
- * {} を判定すれば良いはず? => x
+ * undefined or 空オブジェクトの場合falseにすれば良いはず
  * @param {*} x 
  */
 const isEmptyDeep = x => {
-   const y = Object.values(x)
-   if (y.length === 0) {
-     return true
-   }
-   if (y.filter(z => z !== undefined).length === 0) {
-     return true
-   }
-   return false
+  if (typeof x === 'object') {
+    return false
+  }
+  if (x === undefined) {
+    return true
+  }
+  if (Object.values(x).length === 0) {
+    return true
+  }
+  return false
 }
 
 /**
@@ -46,6 +48,7 @@ const omitEmptyDeep = x => {
       return x;
   }
 
+  // Object or Array
   return _.isArray(x) ?
       _.map(_.reject(x, isEmptyDeep), omitEmptyDeep) :
       _.mapValues(_.omitBy(x, isEmptyDeep), omitEmptyDeep);
